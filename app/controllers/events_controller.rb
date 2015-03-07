@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  before_filter :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :check_user, only: [:edit, :update, :destroy]
   # GET /events
   # GET /events.json
   def index
@@ -25,7 +26,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
+    @event.user_id = current_user.id
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
@@ -71,4 +72,10 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:name, :description, :deadline, :image, :category)
     end
+  
+   def check_user
+    if current_user != @event.user
+      redirect_to root_url, alert: "Sorry, this event belongs to someone else"\
+      end
+  end
 end

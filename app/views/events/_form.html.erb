@@ -13,25 +13,22 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class:"form-control", placeholder:"What are you looking for?", required: "true" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description , class:"form-control", placeholder:"Give more details about what you need (e.g. numbers, specifications, circumstances ) ", required: "true"%>
   </div>
   <div class="field">
     <%= f.label :deadline %><br>
-    <%= f.text_field :deadline %>
-  </div>
-  <div class="field">
-    <%= f.label :image %><br>
-    <%= f.text_field :image %>
+    
+    <%= f.date_field :deadline, class:"form-control", required: "true" %>
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.select :category, ['Food', 'Venue', 'Decorations', 'Entertainment', 'Catering', 'Clothing', 'Other' ] , :prompt => 'Select a category', class:"form-control", required: "true" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group ">
+    <%= f.submit "Add Request", class:"btn btn-primary" %>
   </div>
 <% end %>
