@@ -1,4 +1,11 @@
+ <div id="bid">
+      <% @bids.each do |bid| %>
+       <% if @event.lowbid>bid.price 
+            @event.lowbid=bid.price;
+        end %> 
 
+      <% end %>
+    </div>
 
   <div class="col-md-6 col-md-offset-3" >
          <p id="notice"><%= notice %></p>
@@ -30,8 +37,23 @@
               <strong>Image:</strong>
               <%= @event.image %>
             </p>
-
+             <p>
+              <strong>Current Bid:</strong>
+              <%if @event.lowbid!= 99999 %>  
+               <%= @event.lowbid %>
+               <% end %>
+            </p>
             <%= link_to 'Edit', edit_event_path(@event) %> |
-            <%= link_to 'Back', events_path %>             
-  </div> 
+            <%= link_to 'Back', events_path %>
+    <% if @event.user != current_user %>
+    <%= link_to 'Bid me', new_event_bid_path(@event), class:"btn btn-primary" %>
+    <% end %> 
     
+   
+     <div id="bid">
+      <% @bids.each do |bid| %>
+      <p> <%= bid.price %></p>
+      <% end %>
+    </div>
+  </div> 
+

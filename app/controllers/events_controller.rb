@@ -5,12 +5,14 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @events = Event.all.order("created_at DESC")
   end
+
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @bids= Bid.where(event_id: @event.id)
   end
 
   # GET /events/new
@@ -27,6 +29,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
+    @event.lowbid= 99999
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }

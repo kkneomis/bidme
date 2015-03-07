@@ -1,8 +1,27 @@
 Rails.application.routes.draw do
+ 
+
+  get 'categories/food'
+
+  get 'categories/venue'
+
+  get 'categories/decorations'
+
+  get 'categories/entertainment'
+
+  get 'categories/catering'
+
+  get 'categories/clothing'
+
+  get 'categories/other'
+
   resources :groups
 
   devise_for :users
-  resources :events
+  resources :events do
+     resources :bids
+  end 
+  
   root 'pages#home'
   get 'pages/home'
 

@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
   
   validates :name, presence: true
   has_many :events, dependent: :destroy
+  has_many :bids,  class_name: "Bid", foreign_key: "bidder_id"
+  has_many :offers, class_name: "Bid", foreign_key: "customer_id"
+
 end

@@ -24,6 +24,8 @@ gem "mini_magick"
 
 gem 'devise'
 
+gem 'acts_as_commentable'
+
 group :production do
 
 gem 'pg'

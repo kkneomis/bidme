@@ -1,15 +1,28 @@
+<div class="text-center">  
+  <%= link_to "Create an Event", new_event_path, class: "btn btn-primary btn-lg"%>
+</div>
+<br>
 
-  <div class="col-md-6 col-md-offset-3" >
-    <%= link_to 'New Event', new_event_path %>
-      <% @events.each do |event| %>
-      <div class="panel panel-default">
-         <div class="panel-heading t">
-            <h3 class="panel-title text-center" style="font-weight: bold;" >
-              <%= link_to event.name, event %>
-            </h3>
-           <p><%= event.description %> </p>
-      </div>
-    <% end %>                        
-  </div> 
-    <br>
-   <hr>
+<% @events.each_slice(2) do |event_group| %>
+ <div class="container" > 
+  <div class="row">
+    <% event_group.each do |event| %>
+            <div class="col-md-6 col-sm-6 ">
+                  <div class="single-profile-bottom wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="media text-center">
+                        <i class="fa fa-glass fa-2x"></i>
+                        <h4><%= link_to event.name.upcase, event %></h4>
+                      <% if event.lowbid==99999 %>
+                        <h5> No Bids Yet </h5>
+                      <%else %>
+                          <h5>Lowest Bid: <%= event.lowbid %></h5>
+                      <% end %>
+                      <p><%= event.description %></p>
+                     </div>
+                </div>
+            </div>  
+         <% end %>
+    </div>
+   <br>
+</div> 
+ <%end %>
