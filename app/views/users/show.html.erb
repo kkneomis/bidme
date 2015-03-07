@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="span3 well">
+        <center>
+          <%= cl_image_tag(@user.image) %>
+          <h3><%= @user.name %></h3>
+          <p><%= @user.description %></p>
+		</center>
+    </div>
+    <!-- Modal -->
+    
+  <% @user.events.each_slice(2) do |event_group| %>
+ <div class="container" > 
+  <div class="row">
+    <% event_group.each do |event| %>
+            <div class="col-md-6 col-sm-6 ">
+                  <div class="single-profile-bottom wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="media text-center">
+                      <% if event.category == "Venue" %>  
+                        <i class="fa fa-building fa-2x"></i>
+                      <% elsif event.category == "Food" %>
+                        <i class="fa fa-birthday-cake fa-2x"></i>
+                      <%  elsif event.category == "Decorations"  %>
+                        <i class="fa fa-gift fa-2x"></i>
+                      <%  elsif event.category == "Entertainment"  %>
+                        <i class="fa fa-camera fa-2x"></i>
+                      <%  elsif event.category == "Catering"  %>
+                        <i class="fa fa-glass fa-2x"></i>
+                      <% elsif event.category == "Clothing"  %>
+                      <i class="fa fa-briefcase fa-2x"></i>
+                      <%  elsif event.category == "Other"  %>
+                      <i class="fa fa-star fa-2x"></i>
+                     <% end %>
+                      
+                        <h4><%= link_to event.name.upcase, event %></h4>
+                     <% if event.bids.count==0 %>
+                        <h5> No Bids Yet </h5>
+                      <%else %>
+                      <h5><%= event.bids.count %> bids</h5>
+                      <% end %>
+                      <h5>Due: <%= event.deadline %></h5>
+                      <p><%= event.description %></p>
+                     </div>
+                </div>
+            </div>  
+         <% end %>
+    </div>
+   <br>
+</div> 
+ <%end %>

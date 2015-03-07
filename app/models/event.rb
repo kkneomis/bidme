@@ -2,7 +2,7 @@ class Event < ActiveRecord::Base
   validates :name, :description, :deadline, presence: true
   
   belongs_to :user
-  has_many :bids
+  has_many :bids, dependent: :destroy
   acts_as_commentable
 
 end

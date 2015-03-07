@@ -28,6 +28,7 @@ gem 'acts_as_commentable'
 
 gem 'carrierwave'
 
+gem 'cloudinary'
 group :production do
 
 gem 'pg'

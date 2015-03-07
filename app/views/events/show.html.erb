@@ -28,7 +28,8 @@
                       <%  elsif @event.category == "Other"  %>
                       <i class="fa fa-star fa-2x"></i>
                      <% end %>
-                      <h4>Bid for <%=  @event.user.name %>'s request</h4>
+                        
+                      <h4>Bid for <%= link_to @event.user.name, @event.user %>'s request</h4>
                         <h4><%=  @event.name.upcase %></h4>
                       <% if @event.bids.count==0 %>
                         <h5> No Bids Yet </h5>
