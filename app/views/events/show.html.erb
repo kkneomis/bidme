@@ -39,15 +39,21 @@
                       <p><%= @event.description %></p>
                       <h5>Due: <%= @event.deadline %></h5>
                        <% if @event.user != current_user %>
-                        <%= link_to 'Bid me', new_event_bid_path(@event), class:"btn btn-primary" %>
+                      <%= link_to 'Bid me', new_event_bid_path(@event), class:"btn btn-primary" %>
                         <% end %> 
     
                      </div>
                 </div>
+                    <% @bids.each do |bid| %>
                       <div class="single-profile-bottom">
-                        <% @bids.each do |bid| %>
-                        <p>Someone  bid  $<%= bid.price %> for this event.</p>
+                        <p>
+                          <% if @event.user_id == current_user.id %> 
+                          <%= User.find_by(id: bid.bidder_id) %>
+                          <% else %> 
+                            Someone 
+                          <% end %>
+                          bid  $<%= bid.price%>  for this event.</p>
                         <% end %>
                       </div>
-      <%=link_to "Back", events_path %>
+      <%=link_to "Back", events_path, class:"btn btn-default" %>
             </div>  
