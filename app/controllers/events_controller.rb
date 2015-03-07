@@ -14,6 +14,9 @@ class EventsController < ApplicationController
   def show
     @bids= Bid.where(event_id: @event.id)
   end
+  
+  
+  
 
   # GET /events/new
   def new

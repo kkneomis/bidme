@@ -26,6 +26,8 @@ gem 'devise'
 
 gem 'acts_as_commentable'
 
+gem 'carrierwave'
+
 group :production do
 
 gem 'pg'

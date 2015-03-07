@@ -29,7 +29,7 @@ class BidsController < ApplicationController
    
     @event = Event.find(params[:event_id])
     @bid.event_id = @event.id
-    @bidder=@bid.user
+    @bidder=@event.user
     
     @bid.bidder_id= current_user.id
     @bid.customer_id= @event.user_id

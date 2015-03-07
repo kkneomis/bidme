@@ -7,4 +7,9 @@ class PagesController < ApplicationController
 
   def contact
   end
+  
+  def planner
+    @events = Event.where(user: current_user)
+  end
+  
 end

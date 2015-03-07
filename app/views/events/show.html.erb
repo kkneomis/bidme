@@ -1,59 +1,52 @@
- <div id="bid">
-      <% @bids.each do |bid| %>
-       <% if @event.lowbid>bid.price 
-            @event.lowbid=bid.price;
-        end %> 
 
-      <% end %>
-    </div>
-
-  <div class="col-md-6 col-md-offset-3" >
-         <p id="notice"><%= notice %></p>
-
-            <p>
-              <strong>Name:</strong>
-              <%= @event.name %>
-            </p>
-              <p>
-              <strong>Belongs to:</strong>
-                <%= @event.user.name %>
-            </p>
-            <p>
-              <strong>Description:</strong>
-              <%= @event.description %>
-            </p>
-
-            <p>
-              <strong>Deadline:</strong>
-              <%= @event.deadline %>
-            </p>
-
-            <p>
-              <strong>Category:</strong>
-              <%= @event.category %>
-            </p>
-
-            <p>
-              <strong>Image:</strong>
-              <%= @event.image %>
-            </p>
-             <p>
-              <strong>Current Bid:</strong>
-              <%if @event.lowbid!= 99999 %>  
-               <%= @event.lowbid %>
-               <% end %>
-            </p>
-            <%= link_to 'Edit', edit_event_path(@event) %> |
-            <%= link_to 'Back', events_path %>
-    <% if @event.user != current_user %>
-    <%= link_to 'Bid me', new_event_bid_path(@event), class:"btn btn-primary" %>
-    <% end %> 
-    
+   
    
      <div id="bid">
       <% @bids.each do |bid| %>
-      <p> <%= bid.price %></p>
+       <% if @event.lowbid > bid.price %>
+          <% @event.lowbid = bid.price %>
+         
+       <% end %>
       <% end %>
     </div>
-  </div> 
-
+ 
+    <div class="col-md-6 col-sm-6 col-md-offset-3">
+                  <div class="single-profile-bottom wow " data-wow-duration="1000ms" data-wow-delay="600ms">
+                    <div class="media text-center">
+                      <% if @event.category == "Venue" %>  
+                        <i class="fa fa-building fa-2x"></i>
+                      <% elsif @event.category == "Food" %>
+                        <i class="fa fa-birthday-cake fa-2x"></i>
+                      <%  elsif @event.category == "Decorations"  %>
+                        <i class="fa fa-gift fa-2x"></i>
+                      <%  elsif @event.category == "Entertainment"  %>
+                        <i class="fa fa-camera fa-2x"></i>
+                      <%  elsif @event.category == "Catering"  %>
+                        <i class="fa fa-glass fa-2x"></i>
+                      <% elsif @event.category == "Clothing"  %>
+                      <i class="fa fa-briefcase fa-2x"></i>
+                      <%  elsif @event.category == "Other"  %>
+                      <i class="fa fa-star fa-2x"></i>
+                     <% end %>
+                      <h4>Bid for <%=  @event.user.name %>'s request</h4>
+                        <h4><%=  @event.name.upcase %></h4>
+                      <% if @event.bids.count==0 %>
+                        <h5> No Bids Yet </h5>
+                      <%else %>
+                      <h5><%= @event.bids.count %> bids</h5>
+                      <% end %>
+                      <p><%= @event.description %></p>
+                      <h5>Due: <%= @event.deadline %></h5>
+                       <% if @event.user != current_user %>
+                        <%= link_to 'Bid me', new_event_bid_path(@event), class:"btn btn-primary" %>
+                        <% end %> 
+    
+                     </div>
+                </div>
+                      <div class="single-profile-bottom">
+                        <% @bids.each do |bid| %>
+                        <p>Someone  bid  $<%= bid.price %> for this event.</p>
+                        <% end %>
+                      </div>
+      <%=link_to "Back", events_path %>
+            </div>  

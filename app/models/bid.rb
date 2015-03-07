@@ -1,4 +1,4 @@
 class Bid < ActiveRecord::Base
-  belongs_to :user, class_name: "Bidder"
-  belongs_to :event, class_name: "Customer"
+  belongs_to :user, class_name: "bidder"
+  belongs_to :event, class_name: "customer"
 end

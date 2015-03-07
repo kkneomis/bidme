@@ -1,40 +1,31 @@
-<h2>Sign up</h2>
+<div class="col-md-6 col-md-offset-3">  
+  <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %>
-  </div>
- <div class="field">
-   <%= f.label :description %><br />
-   <%= f.text_field :description, autofocus: true %>
-  </div>
-<div class="field">
-   <%= f.label :location %><br />
-   <%= f.text_field :location, autofocus: true %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= devise_error_messages! %>
+        <div class="field">
+          <%= f.text_field :name, placeholder:"Enter Your Name", required: "true", autofocus: true, class:"form-control" %>
+      </div>
+     <div class="field">
+       <%= f.text_area :description, placeholder:"Please describe your reasons for using Bid My Event (if applicatble)", autofocus: true, class:"form-control" %>
+      </div>
+   
+      <div class="field">
+        <%= f.email_field :email, placeholder:"Enter Your Email Address", required: "true", autofocus: true, class:"form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
+      <div class="field">
+        <%= f.password_field :password, placeholder:"Enter Your Password", autocomplete: "off", required: "true", class:"form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+      <div class="field">
+        <%= f.password_field :password_confirmation,placeholder:"Re-Enter Your Password", autocomplete: "off" , required: "true", class:"form-control"%>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+      <div class="actions">
+        <%= f.submit "Sign up", class:"btn btn-primary" %>
+      </div>
+    <% end %>
 
-<%= render "devise/shared/links" %>
+    <%= render "devise/shared/links" %>
+</div>

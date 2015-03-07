@@ -1,20 +1,6 @@
 Rails.application.routes.draw do
  
 
-  get 'categories/food'
-
-  get 'categories/venue'
-
-  get 'categories/decorations'
-
-  get 'categories/entertainment'
-
-  get 'categories/catering'
-
-  get 'categories/clothing'
-
-  get 'categories/other'
-
   resources :groups
 
   devise_for :users
@@ -28,6 +14,7 @@ Rails.application.routes.draw do
   get 'pages/about'
 
   get 'pages/contact'
+  get 'pages/planner'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
