@@ -1,0 +1,15 @@
+
+  <div class="col-md-6 col-md-offset-3" >
+    <%= link_to 'New Event', new_event_path %>
+      <% @events.each do |event| %>
+      <div class="panel panel-default">
+         <div class="panel-heading t">
+            <h3 class="panel-title text-center" style="font-weight: bold;" >
+              <%= link_to event.name, event %>
+            </h3>
+           <p><%= event.description %> </p>
+      </div>
+    <% end %>                        
+  </div> 
+    <br>
+   <hr>

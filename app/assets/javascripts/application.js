@@ -13,4 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require bootstrap.min
+//= require events
+//= require html5shiv
+//= require jquery.isotope.min
+//= require jquery.prettyPhoto
+//= require main
+//= require_tree
