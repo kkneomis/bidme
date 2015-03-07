@@ -55,9 +55,10 @@
                           <% else %> 
                             Someone 
                           <% end %>
-                          on <%= bid.created_at.strftime("%b/%d/%Y") %> at   <%= bid.created_at.strftime("%I:%M%p") %></div>   </div>
+                          on <%= bid.created_at.strftime("%b/%d/%Y") %> at   <%= bid.created_at.strftime("%I:%M%p") %> 
                        </div> 
-                <% end %>
+                  </div> 
+            <% end %>
                       
       <%=link_to "Back", events_path, class:"btn btn-default" %>
             </div>  
